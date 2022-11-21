@@ -6,7 +6,7 @@ package utp.edu.pe.app.empleado;
 
 import javax.swing.table.DefaultTableModel;
 import utp.edu.pe.dao.daoEmpleados;
-import utp.edu.pe.entity.Empleado;
+import utp.edu.pe.entity.empleado;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -271,7 +271,7 @@ public class frmMainEmpleado extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblEmpleados.getModel();
         modeloTabla.setRowCount(0);
         
-        List<Empleado> lstEmpleados = new ArrayList();
+        List<empleado> lstEmpleados = new ArrayList();
         daoEmpleados empleadoDatos = new daoEmpleados();
         lstEmpleados = empleadoDatos.listarEmpleados();
         String datos[] = new String[6];

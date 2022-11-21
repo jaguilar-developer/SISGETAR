@@ -8,7 +8,7 @@ package utp.edu.pe.entity;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class Pasajero extends Persona {
+public class pasajero extends persona {
     
     Integer idPasajero;
     Boolean estudiante;

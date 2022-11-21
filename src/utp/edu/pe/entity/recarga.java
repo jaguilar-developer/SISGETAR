@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class Recarga {
+public class recarga {
     
     Integer idRecarga;
     Integer nroRecarga;

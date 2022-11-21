@@ -4,7 +4,7 @@
  */
 package utp.edu.pe.dao;
 
-import utp.edu.pe.entity.Empleado;
+import utp.edu.pe.entity.empleado;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class daoEmpleados extends dataSource{    
     
-    public List<Empleado> listarEmpleados(){        
+    public List<empleado> listarEmpleados(){        
         
-        List<Empleado> lstEmpleados = new ArrayList();
+        List<empleado> lstEmpleados = new ArrayList();
         Connection con = getConexion();
         
         try {
@@ -28,7 +28,7 @@ public class daoEmpleados extends dataSource{
             ResultSet rs = stms.executeQuery("{call SIS_LISTAR_EMPLEADOS}");
 
             while (rs.next()) {
-                Empleado empleado = new Empleado();
+                empleado empleado = new empleado();
                 empleado.setNombre(rs.getString("NOMBRE"));
                 empleado.setApellidoPat(rs.getString("APELLIDOPAT"));
                 empleado.setApellidoMat(rs.getString("APELLIDOMAT"));
@@ -42,7 +42,7 @@ public class daoEmpleados extends dataSource{
             
         } catch (SQLException e) {
             System.out.println("ERROR" + e.getMessage());
-            Empleado empleado = new Empleado();
+            empleado empleado = new empleado();
             empleado.setNombre("NO DATA");
             empleado.setApellidoPat("");
             empleado.setApellidoMat("");
