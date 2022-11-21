@@ -10,13 +10,14 @@ import java.util.Date;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class persona {
+public class Persona {
     
     Integer id;
     String nombre;
     String apellidoPat;
     String apellidoMat;
     String tipoDocumento;
+    String numeroDocumento;
     Date fechaNacimiento;
     String nroTelefono1;
     String nroTelefono2;
@@ -62,6 +63,14 @@ public class persona {
         this.tipoDocumento = tipoDocumento;
     }
 
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -93,5 +102,7 @@ public class persona {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    
     
 }

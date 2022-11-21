@@ -8,7 +8,7 @@ package utp.edu.pe.entity;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class empleado extends persona {
+public class Empleado extends Persona {
     
     Integer idEmpleado;
     String cargo;
