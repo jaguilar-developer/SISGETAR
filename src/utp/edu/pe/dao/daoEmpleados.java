@@ -5,6 +5,7 @@
 package utp.edu.pe.dao;
 
 import utp.edu.pe.entity.empleado;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -51,6 +52,35 @@ public class daoEmpleados extends dataSource{
             empleado.setCargo("");
             return lstEmpleados;
         }
+    }
+    
+    public String crearEmpleado(empleado objEmpleado) {
+        Connection con = getConexion();
+        String codRespuesta = "";
+        
+        try {
+            
+            CallableStatement cstmt = con.prepareCall("{call dbo.SIS_CREAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cstmt.setNString("NOMBRE", objEmpleado.getNombre());
+            cstmt.setNString("APELLIDOPAT", objEmpleado.getNombre());
+            cstmt.setNString("APELLIDOMAT", objEmpleado.getNombre());
+            cstmt.setNString("TIPODOCUMENTO", objEmpleado.getNombre());
+            cstmt.setNString("NUMERODOCUMENTO", objEmpleado.getNombre());
+            cstmt.setDate("FECHANACIMIENTO", null);
+            cstmt.setNString("NROTELEFONO1", objEmpleado.getNroTelefono1());
+            cstmt.setNString("NROTELEFONO2", objEmpleado.getNroTelefono2());
+            cstmt.setNString("EMAIL", objEmpleado.getEmail());
+            cstmt.setNString("CARGO", objEmpleado.getCargo());
+            cstmt.setFloat("CALIFICACION", 100);
+            cstmt.registerOutParameter("CODRESPUESTA", java.sql.Types.VARCHAR);            
+            cstmt.execute();
+            codRespuesta = cstmt.getString("CODRESPUESTA");
+            
+        } catch (SQLException e) {
+            codRespuesta = e.getMessage();
+        }        
+        
+        return codRespuesta;
     }
     
 }

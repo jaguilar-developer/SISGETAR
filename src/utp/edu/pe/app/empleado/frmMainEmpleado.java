@@ -4,11 +4,14 @@
  */
 package utp.edu.pe.app.empleado;
 
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import utp.edu.pe.dao.daoEmpleados;
 import utp.edu.pe.entity.empleado;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,9 +58,11 @@ public class frmMainEmpleado extends javax.swing.JFrame {
         txtEmailEmpleado = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtCargoEmpleado = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        bntGuardar = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtFNacimientoEmpleado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,16 +110,32 @@ public class frmMainEmpleado extends javax.swing.JFrame {
 
         jLabel10.setText("Cargo:");
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/app/resources/salvar.png"))); // NOI18N
-
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/app/resources/boton-eliminar.png"))); // NOI18N
 
+        bntGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/app/resources/salvar.png"))); // NOI18N
+        bntGuardar.setName(""); // NOI18N
+        bntGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bntGuardarMouseClicked(evt);
+            }
+        });
+
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/app/resources/agregar-archivo.png"))); // NOI18N
+
+        jLabel15.setText("F. Nacimiento:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(bntGuardar)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel12)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel13)
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +147,8 @@ public class frmMainEmpleado extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNombreEmpleado)
@@ -137,16 +159,9 @@ public class frmMainEmpleado extends javax.swing.JFrame {
                     .addComponent(txtNroTelefono1Empleado)
                     .addComponent(txtNroTelefono2Empleado)
                     .addComponent(txtEmailEmpleado)
-                    .addComponent(txtCargoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(txtCargoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(txtFNacimientoEmpleado))
                 .addGap(40, 40, 40))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel11)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel12)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel13)
-                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,10 +202,14 @@ public class frmMainEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtCargoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtFNacimientoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(bntGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jLabel13))
                 .addGap(77, 77, 77))
@@ -223,6 +242,12 @@ public class frmMainEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bntGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntGuardarMouseClicked
+        // TODO add your handling code here:
+        guardarEmpleado();
+        cargarEmpleados();
+    }//GEN-LAST:event_bntGuardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -259,6 +284,38 @@ public class frmMainEmpleado extends javax.swing.JFrame {
         });
     }
     
+    public void guardarEmpleado() {
+        Date fNacimiento = new Date();
+        empleado objEmpleado = new empleado();
+        daoEmpleados empleadoDatos = new daoEmpleados();
+        String msjRespuesta = "";
+                
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+            fNacimiento = formato.parse(txtFNacimientoEmpleado.getText());
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al cargar las fechas" + e.getMessage());
+        }
+        
+        
+        objEmpleado.setNombre(txtNombreEmpleado.getText());
+        objEmpleado.setApellidoPat(txtApePatEmpleado.getText());
+        objEmpleado.setApellidoMat(txtApeMatEmpleado.getText());
+        objEmpleado.setTipoDocumento(txtTipoDocEmpleado.getText());
+        objEmpleado.setCargo(txtCargoEmpleado.getText());
+        objEmpleado.setEmail(txtEmailEmpleado.getText());
+        objEmpleado.setFechaNacimiento(fNacimiento);
+        objEmpleado.setNumeroDocumento(txtNroDocEmpleado.getText());
+        objEmpleado.setNroTelefono1(txtNroTelefono1Empleado.getText());
+        objEmpleado.setNroTelefono2(txtNroTelefono2Empleado.getText());
+        
+        msjRespuesta = empleadoDatos.crearEmpleado(objEmpleado);
+        JOptionPane.showMessageDialog(this, msjRespuesta);
+
+
+    }
+    
     public void cargarEmpleados() {
         
         try { 
@@ -288,11 +345,12 @@ public class frmMainEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bntGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -308,6 +366,7 @@ public class frmMainEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtApePatEmpleado;
     private javax.swing.JTextField txtCargoEmpleado;
     private javax.swing.JTextField txtEmailEmpleado;
+    private javax.swing.JTextField txtFNacimientoEmpleado;
     private javax.swing.JTextField txtNombreEmpleado;
     private javax.swing.JTextField txtNroDocEmpleado;
     private javax.swing.JTextField txtNroTelefono1Empleado;
