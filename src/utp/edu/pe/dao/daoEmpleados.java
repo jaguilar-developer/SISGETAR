@@ -56,16 +56,16 @@ public class daoEmpleados extends dataSource{
     
     public String crearEmpleado(empleado objEmpleado) {
         Connection con = getConexion();
-        String codRespuesta = "";
+        String codRespuesta;
         
         try {
             
             CallableStatement cstmt = con.prepareCall("{call dbo.SIS_CREAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?,?)}");
             cstmt.setNString("NOMBRE", objEmpleado.getNombre());
-            cstmt.setNString("APELLIDOPAT", objEmpleado.getNombre());
-            cstmt.setNString("APELLIDOMAT", objEmpleado.getNombre());
-            cstmt.setNString("TIPODOCUMENTO", objEmpleado.getNombre());
-            cstmt.setNString("NUMERODOCUMENTO", objEmpleado.getNombre());
+            cstmt.setNString("APELLIDOPAT", objEmpleado.getApellidoPat());
+            cstmt.setNString("APELLIDOMAT", objEmpleado.getApellidoMat());
+            cstmt.setNString("TIPODOCUMENTO", objEmpleado.getTipoDocumento());
+            cstmt.setNString("NUMERODOCUMENTO", objEmpleado.getNumeroDocumento());
             cstmt.setDate("FECHANACIMIENTO", null);
             cstmt.setNString("NROTELEFONO1", objEmpleado.getNroTelefono1());
             cstmt.setNString("NROTELEFONO2", objEmpleado.getNroTelefono2());

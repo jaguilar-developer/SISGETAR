@@ -12,7 +12,7 @@ public class tarjeta {
     
     Integer idTarjeta;
     String servicio;
-    Double montoPasaje;
+    Float montoPasaje;
     Boolean estado;
 
     public Integer getIdTarjeta() {
@@ -31,11 +31,11 @@ public class tarjeta {
         this.servicio = servicio;
     }
 
-    public Double getMontoPasaje() {
+    public Float getMontoPasaje() {
         return montoPasaje;
     }
 
-    public void setMontoPasaje(Double montoPasaje) {
+    public void setMontoPasaje(Float montoPasaje) {
         this.montoPasaje = montoPasaje;
     }
 
