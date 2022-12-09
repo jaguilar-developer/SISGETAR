@@ -12,12 +12,27 @@ import java.util.Date;
  */
 public class carne {
     
-    Integer idPasajero;
-    Integer idTarjeta;
     Integer nroCarne;
+    Integer idPasajero;
+    Integer idTarjeta;    
     Date fechaRegistro;
     Date fechaVigente;
-    Boolean estado;
+    Float saldo;
+    String descripcion;
+    Boolean estado;    
+    
+    //para armar la vista
+    String numeroDocumento;
+    String pasajero;
+    String descripcionTarjeta;
+
+    public Integer getNroCarne() {
+        return nroCarne;
+    }
+
+    public void setNroCarne(Integer nroCarne) {
+        this.nroCarne = nroCarne;
+    }
 
     public Integer getIdPasajero() {
         return idPasajero;
@@ -33,14 +48,6 @@ public class carne {
 
     public void setIdTarjeta(Integer idTarjeta) {
         this.idTarjeta = idTarjeta;
-    }
-
-    public Integer getNroCarne() {
-        return nroCarne;
-    }
-
-    public void setNroCarne(Integer nroCarne) {
-        this.nroCarne = nroCarne;
     }
 
     public Date getFechaRegistro() {
@@ -59,19 +66,11 @@ public class carne {
         this.fechaVigente = fechaVigente;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public Double getSaldo() {
+    public Float getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
+    public void setSaldo(Float saldo) {
         this.saldo = saldo;
     }
 
@@ -82,7 +81,38 @@ public class carne {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    Double saldo;
-    String descripcion;
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getPasajero() {
+        return pasajero;
+    }
+
+    public void setPasajero(String pasajero) {
+        this.pasajero = pasajero;
+    }
+
+    public String getDescripcionTarjeta() {
+        return descripcionTarjeta;
+    }
+
+    public void setDescripcionTarjeta(String descripcionTarjeta) {
+        this.descripcionTarjeta = descripcionTarjeta;
+    }
+    
     
 }

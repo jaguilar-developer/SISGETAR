@@ -14,7 +14,7 @@ public class usuario {
     String usuario;
     String password;
     String rol;
-    Boolean estado;
+    Boolean estado;    
 
     public Integer getIdUsuario() {
         return idUsuario;
