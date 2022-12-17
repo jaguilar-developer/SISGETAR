@@ -80,6 +80,7 @@ public class daoEmpleados extends dataSource{
             empleado.setNumeroDocumento("");
             empleado.setNroTelefono1("");
             empleado.setCargo("");
+            lstEmpleados.add(empleado);
             return lstEmpleados;
         }
     }

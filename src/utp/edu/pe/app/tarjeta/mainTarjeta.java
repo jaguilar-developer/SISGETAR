@@ -4,12 +4,11 @@
  */
 package utp.edu.pe.app.tarjeta;
 
+import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import static utp.edu.pe.app.frmPrincipal.content;
-import utp.edu.pe.dao.daoCarnes;
 import utp.edu.pe.dao.daoTarjetas;
-import utp.edu.pe.entity.Carne;
 import utp.edu.pe.entity.Tarjeta;
 
 /**
@@ -51,33 +50,33 @@ public class mainTarjeta extends javax.swing.JPanel {
         tblTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblTarjetas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Servicio", "Pasaje (S/.)", "Descripcion"
+                "ID", "Servicio", "Pasaje (S/.)", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -94,6 +93,7 @@ public class mainTarjeta extends javax.swing.JPanel {
             tblTarjetas.getColumnModel().getColumn(0).setResizable(false);
             tblTarjetas.getColumnModel().getColumn(1).setResizable(false);
             tblTarjetas.getColumnModel().getColumn(2).setResizable(false);
+            tblTarjetas.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -168,11 +168,34 @@ public class mainTarjeta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaTarjetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaTarjetaMouseClicked
-
+        crearTarjeta crearTarjeta = new crearTarjeta();
+        crearTarjeta.setSize(770, 700);
+        crearTarjeta.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(crearTarjeta, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();     
     }//GEN-LAST:event_btnNuevaTarjetaMouseClicked
 
     private void btnActualizarTarjetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarTarjetaMouseClicked
-
+        actualizarTarjeta actualizarTarjeta = new actualizarTarjeta();
+        actualizarTarjeta.setSize(770, 700);
+        actualizarTarjeta.setLocation(0,0);
+        
+        int fila = tblTarjetas.getSelectedRow();        
+        Tarjeta objTarjeta = new Tarjeta();
+        objTarjeta.setIdTarjeta(Integer.valueOf(tblTarjetas.getValueAt(fila, 0).toString()));
+        objTarjeta.setServicio(tblTarjetas.getValueAt(fila, 1).toString());
+        objTarjeta.setMontoPasaje(Float.valueOf(tblTarjetas.getValueAt(fila, 2).toString()));
+        objTarjeta.setDescripcion(tblTarjetas.getValueAt(fila, 3).toString());
+        
+        actualizarTarjeta.cargarTarjeta(objTarjeta);
+        
+        content.removeAll();
+        content.add(actualizarTarjeta, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_btnActualizarTarjetaMouseClicked
 
     private void cargarTarjetas() {
@@ -181,16 +204,16 @@ public class mainTarjeta extends javax.swing.JPanel {
         
         daoTarjetas tarjetaDatos = new daoTarjetas();
         List<Tarjeta> lstTarjetas = tarjetaDatos.listaTarjetas();
-        String datos[] = new String[3];
+        String datos[] = new String[4];
         
         for (int i=0;i<lstTarjetas.size();i++) {
-            datos[0] = lstTarjetas.get(i).getServicio();
-            datos[1] = String.valueOf(lstTarjetas.get(i).getMontoPasaje());
-            datos[2] = lstTarjetas.get(i).getDescripcion();
+            datos[0] = String.valueOf(lstTarjetas.get(i).getIdTarjeta());
+            datos[1] = lstTarjetas.get(i).getServicio();
+            datos[2] = String.valueOf(lstTarjetas.get(i).getMontoPasaje());
+            datos[3] = lstTarjetas.get(i).getDescripcion();
             modeloTabla.addRow(datos);
         }
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnActualizarTarjeta;

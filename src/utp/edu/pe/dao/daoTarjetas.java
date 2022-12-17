@@ -4,6 +4,7 @@
  */
 package utp.edu.pe.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,49 @@ import utp.edu.pe.entity.Tarjeta;
  * @author Jerry Aguilar - U21229611
  */
 public class daoTarjetas extends dataSource {
+    
+    public String actualizarTarjeta(Tarjeta objTarjeta) {
+        Connection con = getConexion();
+        String codRespuesta;
+        
+        try {
+            
+            CallableStatement cstmt = con.prepareCall("{call dbo.SIS_ACTUALIZAR_TARJETA(?,?,?,?,?)}");
+            cstmt.setInt("ID", objTarjeta.getIdTarjeta());
+            cstmt.setNString("SERVICIO", objTarjeta.getServicio());
+            cstmt.setFloat("MONTOPASAJE", objTarjeta.getMontoPasaje());
+            cstmt.setNString("DESCRIPCION", objTarjeta.getDescripcion());
+            cstmt.registerOutParameter("CODRESPUESTA", java.sql.Types.VARCHAR);            
+            cstmt.execute();
+            codRespuesta = cstmt.getString("CODRESPUESTA");
+            
+        } catch (SQLException e) {
+            codRespuesta = e.getMessage();
+        }
+        
+        return codRespuesta;
+    }
+    
+    public String crearTarjeta(Tarjeta objTarjeta) {
+        Connection con = getConexion();
+        String codRespuesta;
+        
+        try {
+            
+            CallableStatement cstmt = con.prepareCall("{call dbo.SIS_CREAR_TARJETA(?,?,?,?)}");
+            cstmt.setNString("SERVICIO", objTarjeta.getServicio());
+            cstmt.setFloat("MONTOPASAJE", objTarjeta.getMontoPasaje());
+            cstmt.setNString("DESCRIPCION", objTarjeta.getDescripcion());
+            cstmt.registerOutParameter("CODRESPUESTA", java.sql.Types.VARCHAR);            
+            cstmt.execute();
+            codRespuesta = cstmt.getString("CODRESPUESTA");
+            
+        } catch (SQLException e) {
+            codRespuesta = e.getMessage();
+        }
+        
+        return codRespuesta;
+    }
     
     public List<Tarjeta> listaTarjetas() {
         List<Tarjeta> lstTarjetas = new ArrayList();
@@ -38,7 +82,8 @@ public class daoTarjetas extends dataSource {
             return lstTarjetas;
         } catch (SQLException e) {
             Tarjeta tarjeta = new Tarjeta();            
-            tarjeta.setServicio("NO DATOS");            
+            tarjeta.setServicio("NO DATOS");
+            lstTarjetas.add(tarjeta);
             return lstTarjetas;
         }        
     }    

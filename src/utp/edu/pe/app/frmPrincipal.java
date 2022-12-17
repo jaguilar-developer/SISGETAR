@@ -10,6 +10,7 @@ import utp.edu.pe.app.empleado.mainEmpleado;
 import utp.edu.pe.app.pasajero.mainPasajero;
 import utp.edu.pe.app.recarga.mainRecarga;
 import utp.edu.pe.app.tarjeta.mainTarjeta;
+import utp.edu.pe.app.usuario.mainUsuario;
 import utp.edu.pe.entity.Usuario;
 
 /**
@@ -46,6 +47,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnRecargas = new javax.swing.JLabel();
         panelTarjetas = new javax.swing.JPanel();
         btnTarjetas = new javax.swing.JLabel();
+        panelUsuarios = new javax.swing.JPanel();
+        btnUsuarios = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         lblRol = new javax.swing.JLabel();
         lblNroDoc = new javax.swing.JLabel();
@@ -223,6 +226,46 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addComponent(btnTarjetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        panelUsuarios.setBackground(new java.awt.Color(0, 102, 204));
+        panelUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelUsuarios.setMaximumSize(new java.awt.Dimension(230, 40));
+        panelUsuarios.setMinimumSize(new java.awt.Dimension(230, 40));
+        panelUsuarios.setPreferredSize(new java.awt.Dimension(230, 40));
+
+        btnUsuarios.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setText("USUARIOS");
+        btnUsuarios.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnUsuarios.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnUsuarios.setPreferredSize(new java.awt.Dimension(230, 40));
+        btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnUsuariosMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
+        panelUsuarios.setLayout(panelUsuariosLayout);
+        panelUsuariosLayout.setHorizontalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelUsuariosLayout.setVerticalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         lblUsuario.setFont(new java.awt.Font("Roboto", 2, 10)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("lblUsuario");
@@ -252,11 +295,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(lblNroDoc)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRecargas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTarjetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelRecargas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelTarjetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -277,7 +322,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(panelRecargas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -406,10 +453,32 @@ public class frmPrincipal extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_panelTarjetasMouseClicked
 
+    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
+        panelUsuarios.setBackground(Color.WHITE);
+        btnUsuarios.setForeground(new Color(0,102,204));
+    }//GEN-LAST:event_btnUsuariosMouseEntered
+
+    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        panelUsuarios.setBackground(new Color(0,102,204));
+        btnUsuarios.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnUsuariosMouseExited
+
+    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
+        mainUsuario lstUsuario = new mainUsuario();
+        lstUsuario.setSize(770,700);
+        lstUsuario.setLocation(0,0); 
+        
+        content.removeAll();
+        content.add(lstUsuario, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_btnUsuariosMouseClicked
+
     public void cargarPerfil(Usuario objUsuario) {
         if (objUsuario.getRol().toUpperCase().equals("PASAJERO")) {
             panelEmpleados.setVisible(false);
             panelPasajeros.setVisible(false);
+            panelTarjetas.setVisible(false);
         }
         
         lblUsuario.setText(objUsuario.getUsuario());
@@ -458,16 +527,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnPasajeros;
     private javax.swing.JLabel btnRecargas;
     private javax.swing.JLabel btnTarjetas;
+    private javax.swing.JLabel btnUsuarios;
     public static javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblNroDoc;
+    public static javax.swing.JLabel lblNroDoc;
     public static javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelEmpleados;
     private javax.swing.JPanel panelPasajeros;
     private javax.swing.JPanel panelRecargas;
     private javax.swing.JPanel panelTarjetas;
+    private javax.swing.JPanel panelUsuarios;
     // End of variables declaration//GEN-END:variables
 }

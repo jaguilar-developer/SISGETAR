@@ -20,7 +20,7 @@ import utp.edu.pe.entity.Empleado;
 public class mainEmpleado extends javax.swing.JPanel {
 
     /**
-     * Creates new form listarEmpleado
+     * Creates new form mainEmpleado
      */
     public mainEmpleado() {
         initComponents();
