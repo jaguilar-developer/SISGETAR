@@ -2,26 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package utp.edu.pe.app.empleado;
+package utp.edu.pe.app.pasajero;
 
 import java.awt.BorderLayout;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static utp.edu.pe.app.frmPrincipal.content;
-import utp.edu.pe.dao.daoEmpleados;
-import utp.edu.pe.entity.Empleado;
+import utp.edu.pe.dao.daoPasajeros;
+import utp.edu.pe.entity.Pasajero;
 
 /**
  *
  * @author Jerry Aguilar - U21229611
  */
-public class actualizarEmpleado extends javax.swing.JPanel {
+public class crearPasajero extends javax.swing.JPanel {
 
     /**
-     * Creates new form crearEmpleado
+     * Creates new form crearPasajero
      */
-    public actualizarEmpleado() {        
+    public crearPasajero() {        
         initComponents();
     }
 
@@ -65,7 +64,7 @@ public class actualizarEmpleado extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel1.setText("Actualizar empleado");
+        jLabel1.setText("Crear pasajero");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setText("NOMBRE :");
@@ -123,71 +122,45 @@ public class actualizarEmpleado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        actualizarEmpleado();
+        guardarPasajero();
         limpiarCajas();
         
-        mainEmpleado mainEmpleado = new mainEmpleado();
-        mainEmpleado.setSize(770, 700);
-        mainEmpleado.setLocation(0,0);
+        mainPasajero mainPasajero = new mainPasajero();
+        mainPasajero.setSize(770, 700);
+        mainPasajero.setLocation(0,0);
         
         content.removeAll();
-        content.add(mainEmpleado, BorderLayout.CENTER);
+        content.add(mainPasajero, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnGuardarMouseClicked
     
-    public void cargarEmpelado(String nroDocumento) {        
-        
-        daoEmpleados empleadoDatos = new daoEmpleados();        
-        Empleado objEmpleado = empleadoDatos.buscarEmpleadoXnroDocumento(nroDocumento);
-        txtNroDocEmpleado.setEnabled(false);
-        
-        txtNombreEmpleado.setText(objEmpleado.getNombre());
-        txtApePatEmpleado.setText(objEmpleado.getApellidoPat());
-        txtApeMatEmpleado.setText(objEmpleado.getApellidoMat());
-        txtTipoDocEmpleado.setSelectedItem(objEmpleado.getTipoDocumento());            
-        txtNroDocEmpleado.setText(objEmpleado.getNumeroDocumento());
-        txtNroTelefono1Empleado.setText(objEmpleado.getNroTelefono1());
-        txtNroTelefono2Empleado.setText(objEmpleado.getNroTelefono2());
-        txtEmailEmpleado.setText(objEmpleado.getEmail());
-        txtCargoEmpleado.setSelectedItem(objEmpleado.getCargo());
-        //txtFNacimientoEmpleado.setText(objEmpleado.getFechaNacimiento().toString());
-    }
-    
-    private void actualizarEmpleado() {        
-        Empleado objEmpleado = new Empleado();
-        daoEmpleados empleadoDatos = new daoEmpleados();
+    public void guardarPasajero() {        
+        Pasajero objPasajero = new Pasajero();
+        daoPasajeros pasajeroDatos = new daoPasajeros();
         String msjRespuesta;
         
-        objEmpleado.setNombre(txtNombreEmpleado.getText());
-        objEmpleado.setApellidoPat(txtApePatEmpleado.getText());
-        objEmpleado.setApellidoMat(txtApeMatEmpleado.getText());
-        objEmpleado.setTipoDocumento(txtTipoDocEmpleado.getSelectedItem().toString());
-        objEmpleado.setCargo(txtCargoEmpleado.getSelectedItem().toString());
-        objEmpleado.setEmail(txtEmailEmpleado.getText());
-        //objEmpleado.setFechaNacimiento(fNacimiento);           
-        objEmpleado.setNumeroDocumento(txtNroDocEmpleado.getText());
-        objEmpleado.setNroTelefono1(txtNroTelefono1Empleado.getText());
-        objEmpleado.setNroTelefono2(txtNroTelefono2Empleado.getText());
+        objPasajero.setNombre(txtNombreEmpleado.getText());
+        objPasajero.setApellidoPat(txtApePatEmpleado.getText());
+        objPasajero.setApellidoMat(txtApeMatEmpleado.getText());
+        objPasajero.setTipoDocumento(txtTipoDocEmpleado.getSelectedItem().toString());
+        objPasajero.setEstudiante(txtCargoEmpleado.getSelectedItem().toString());
+        objPasajero.setEmail(txtEmailEmpleado.getText());
+        //objPasajero.setFechaNacimiento(fNacimiento);
+        objPasajero.setNumeroDocumento(txtNroDocEmpleado.getText());
+        objPasajero.setNroTelefono1(txtNroTelefono1Empleado.getText());
+        objPasajero.setNroTelefono2(txtNroTelefono2Empleado.getText());
         
-        msjRespuesta = empleadoDatos.actualizarEmpleado(objEmpleado);
+        msjRespuesta = pasajeroDatos.crearPasajero(objPasajero);
         JOptionPane.showMessageDialog(this, msjRespuesta);
     }
     
-    private void limpiarCajas() {
+    public void limpiarCajas() {
         JTextField caja;
         for(int i = 0; i < this.getComponentCount(); i++) {
             if(this.getComponent(i).getClass().getName().equals("javax.swing.JTextField")){
                 caja = (JTextField)this.getComponent(i);
                 caja.setText(null);
-            }
-        }
-        
-        JComboBox combo;
-        for(int i = 0; i < this.getComponentCount(); i++) {
-            if(this.getComponent(i).getClass().getName().equals("javax.swing.JComboBox")) {
-                combo = (JComboBox)this.getComponent(i);
-                combo.setSelectedIndex(0);
             }
         }
     }

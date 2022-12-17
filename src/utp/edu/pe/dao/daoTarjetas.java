@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import utp.edu.pe.entity.tarjeta;
+import utp.edu.pe.entity.Tarjeta;
 
 /**
  *
@@ -18,27 +18,26 @@ import utp.edu.pe.entity.tarjeta;
  */
 public class daoTarjetas extends dataSource {
     
-    public List<tarjeta> listaTarjetas() {
-        List<tarjeta> lstTarjetas = new ArrayList();
+    public List<Tarjeta> listaTarjetas() {
+        List<Tarjeta> lstTarjetas = new ArrayList();
         Connection con = getConexion();
         
         try {
-            Statement stms = con.createStatement();
-            //{} NO COLOQUES LLAVES SI ES UN SELECT DIRECTO
-            ResultSet rs = stms.executeQuery("SELECT SERVICIO, MONTOPASAJE, DESCRIPCION FROM TB_TARJETA");
+            Statement stms = con.createStatement();            
+            ResultSet rs = stms.executeQuery("{call SIS_LISTAR_TARJETAS}");
             
             while (rs.next()) {
-                tarjeta tarjeta = new tarjeta();                
+                Tarjeta tarjeta = new Tarjeta();        
+                tarjeta.setIdTarjeta(rs.getInt("IDTARJETA"));
                 tarjeta.setServicio(rs.getString("SERVICIO"));
                 tarjeta.setMontoPasaje(rs.getFloat("MONTOPASAJE"));
-                tarjeta.setDescripcion(rs.getString("DESCRIPCION")); //VALIDA QUE EL NOMBRE SEA IGUAL A TU SELECT
+                tarjeta.setDescripcion(rs.getString("DESCRIPCION"));
                 
                 lstTarjetas.add(tarjeta);
-            } 
-            
+            }            
             return lstTarjetas;
         } catch (SQLException e) {
-            tarjeta tarjeta = new tarjeta();            
+            Tarjeta tarjeta = new Tarjeta();            
             tarjeta.setServicio("NO DATOS");            
             return lstTarjetas;
         }        

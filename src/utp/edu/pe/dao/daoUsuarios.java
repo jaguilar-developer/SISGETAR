@@ -7,7 +7,7 @@ package utp.edu.pe.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-import utp.edu.pe.entity.usuario;
+import utp.edu.pe.entity.Usuario;
 
 /**
  *
@@ -15,24 +15,31 @@ import utp.edu.pe.entity.usuario;
  */
 public class daoUsuarios extends dataSource{
     
-    public Boolean validarUsuario(usuario objUsuario) {
+    public Usuario validarUsuario(Usuario objUsuario) {
         Connection con = getConexion();
-        String rol, codRespuesta;
+        Usuario objUser = new Usuario();
+        String codRespuesta;
         
         try {            
-            CallableStatement cstmt = con.prepareCall("{call dbo.SIS_VALIDAR_USUARIO(?,?,?,?)}");
+            CallableStatement cstmt = con.prepareCall("{call dbo.SIS_VALIDAR_USUARIO(?,?,?,?,?)}");
             cstmt.setNString("USUARIO", objUsuario.getUsuario());
             cstmt.setNString("PASSWORD", objUsuario.getPassword());
             cstmt.registerOutParameter("CODRESPUESTA", java.sql.Types.VARCHAR);            
-            cstmt.registerOutParameter("ROLRESPUESTA", java.sql.Types.VARCHAR);            
-            cstmt.execute();
-            
+            cstmt.registerOutParameter("ROLRESPUESTA", java.sql.Types.VARCHAR);
+            cstmt.registerOutParameter("NRODOCUMENTO", java.sql.Types.VARCHAR);
+            cstmt.execute();            
             codRespuesta = cstmt.getString("CODRESPUESTA");
-            rol = cstmt.getString("ROLRESPUESTA");
-            return codRespuesta.equals("0");
+            
+            objUser.setUsuario(objUsuario.getUsuario());
+            objUser.setEstado(codRespuesta.equals("0"));
+            objUser.setRol(cstmt.getString("ROLRESPUESTA"));
+            objUser.setNumeroDocumento(cstmt.getString("NRODOCUMENTO"));
+            
+            return objUser;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;            
+            objUser.setEstado(false);
+            return objUser;            
         }
     }    
 }

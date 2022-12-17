@@ -11,18 +11,18 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static utp.edu.pe.app.frmPrincipal.content;
 import utp.edu.pe.dao.daoEmpleados;
-import utp.edu.pe.entity.empleado;
+import utp.edu.pe.entity.Empleado;
 
 /**
  *
  * @author Jerry Aguilar - U21229611
  */
-public class listarEmpleado extends javax.swing.JPanel {
+public class mainEmpleado extends javax.swing.JPanel {
 
     /**
      * Creates new form listarEmpleado
      */
-    public listarEmpleado() {
+    public mainEmpleado() {
         initComponents();
         cargarEmpleados();
     }
@@ -233,7 +233,7 @@ public class listarEmpleado extends javax.swing.JPanel {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblEmpleados.getModel();
         modeloTabla.setRowCount(0);
         daoEmpleados empleadoDatos = new daoEmpleados();
-        List<empleado> lstEmpleados = empleadoDatos.buscarEmpleados(txtBuscarEmpleado.getText());
+        List<Empleado> lstEmpleados = empleadoDatos.buscarEmpleados(txtBuscarEmpleado.getText());
         String datos[] = new String[5];
         
         for (int i=0;i<lstEmpleados.size();i++) {
@@ -300,7 +300,7 @@ public class listarEmpleado extends javax.swing.JPanel {
         modeloTabla.setRowCount(0);
         
         daoEmpleados empleadoDatos = new daoEmpleados();
-        List<empleado> lstEmpleados = empleadoDatos.listarEmpleados();
+        List<Empleado> lstEmpleados = empleadoDatos.listarEmpleados();
         String datos[] = new String[5];
         
         for (int i=0;i<lstEmpleados.size();i++) {

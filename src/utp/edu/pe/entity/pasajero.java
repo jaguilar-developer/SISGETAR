@@ -8,10 +8,10 @@ package utp.edu.pe.entity;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class pasajero extends persona {
+public class Pasajero extends Persona {
     
     Integer idPasajero;
-    Boolean estudiante;
+    String estudiante;
     Boolean estado;
 
     public Integer getIdPasajero() {
@@ -22,11 +22,11 @@ public class pasajero extends persona {
         this.idPasajero = idPasajero;
     }
 
-    public Boolean getEstudiante() {
+    public String getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Boolean estudiante) {
+    public void setEstudiante(String estudiante) {
         this.estudiante = estudiante;
     }
 

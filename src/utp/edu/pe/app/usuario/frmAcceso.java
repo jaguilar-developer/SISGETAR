@@ -6,8 +6,9 @@ package utp.edu.pe.app.usuario;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import utp.edu.pe.app.frmPrincipal;
 import utp.edu.pe.dao.daoUsuarios;
-import utp.edu.pe.entity.usuario;
+import utp.edu.pe.entity.Usuario;
 
 /**
  *
@@ -61,7 +62,7 @@ public class frmAcceso extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SISGETAR");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/app/resources/pago.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/resources/pago.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,14 +215,18 @@ public class frmAcceso extends javax.swing.JFrame {
     }
     
     public void validarUsuario() {
-        usuario objUsuario = new usuario();
+        Usuario objUsuario = new Usuario();
         daoUsuarios usuarioDatos = new daoUsuarios();
         
         objUsuario.setUsuario(txtUsuario.getText());
         objUsuario.setPassword(String.valueOf(txtContrasena.getPassword()));        
-        
-        if (usuarioDatos.validarUsuario(objUsuario)){
+        objUsuario = usuarioDatos.validarUsuario(objUsuario);
+        if (objUsuario.getEstado()){
             JOptionPane.showMessageDialog(this, "BIENVENIDO");
+            frmPrincipal frmPrincipal = new frmPrincipal();
+            frmPrincipal.cargarPerfil(objUsuario);
+            frmPrincipal.setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
         }

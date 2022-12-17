@@ -4,7 +4,7 @@
  */
 package utp.edu.pe.dao;
 
-import utp.edu.pe.entity.empleado;
+import utp.edu.pe.entity.Empleado;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -19,8 +19,8 @@ import java.util.List;
  */
 public class daoEmpleados extends dataSource{
     
-    public empleado buscarEmpleadoXnroDocumento(String nroDocumento) {
-        empleado objEmpleado = new empleado();
+    public Empleado buscarEmpleadoXnroDocumento(String nroDocumento) {
+        Empleado objEmpleado = new Empleado();
         Connection con = getConexion();
         
         try {            
@@ -49,8 +49,8 @@ public class daoEmpleados extends dataSource{
         }
     }
     
-    public List<empleado> buscarEmpleados(String valor) {
-        List<empleado> lstEmpleados = new ArrayList();
+    public List<Empleado> buscarEmpleados(String valor) {
+        List<Empleado> lstEmpleados = new ArrayList();
         Connection con = getConexion();
         
         try {            
@@ -59,7 +59,7 @@ public class daoEmpleados extends dataSource{
             ResultSet rs = cstmt.executeQuery();
             
             while (rs.next()) {
-                empleado empleado = new empleado();
+                Empleado empleado = new Empleado();
                 empleado.setNombre(rs.getString("NOMBRE"));
                 empleado.setApellidoPat(rs.getString("APELLIDOPAT"));
                 empleado.setApellidoMat(rs.getString("APELLIDOMAT"));
@@ -73,7 +73,7 @@ public class daoEmpleados extends dataSource{
             
         } catch (SQLException e) {
             System.out.println("ERROR" + e.getMessage());
-            empleado empleado = new empleado();
+            Empleado empleado = new Empleado();
             empleado.setNombre("NO DATA");
             empleado.setApellidoPat("");
             empleado.setApellidoMat("");
@@ -84,9 +84,9 @@ public class daoEmpleados extends dataSource{
         }
     }
     
-    public List<empleado> listarEmpleados(){        
+    public List<Empleado> listarEmpleados(){        
         
-        List<empleado> lstEmpleados = new ArrayList();
+        List<Empleado> lstEmpleados = new ArrayList();
         Connection con = getConexion();
         
         try {
@@ -94,7 +94,7 @@ public class daoEmpleados extends dataSource{
             ResultSet rs = stms.executeQuery("{call SIS_LISTAR_EMPLEADOS}");
 
             while (rs.next()) {
-                empleado empleado = new empleado();
+                Empleado empleado = new Empleado();
                 empleado.setNombre(rs.getString("NOMBRE"));
                 empleado.setApellidoPat(rs.getString("APELLIDOPAT"));
                 empleado.setApellidoMat(rs.getString("APELLIDOMAT"));
@@ -108,7 +108,7 @@ public class daoEmpleados extends dataSource{
             
         } catch (SQLException e) {
             System.out.println("ERROR" + e.getMessage());
-            empleado empleado = new empleado();
+            Empleado empleado = new Empleado();
             empleado.setNombre("NO DATA");
             empleado.setApellidoPat("");
             empleado.setApellidoMat("");
@@ -138,7 +138,7 @@ public class daoEmpleados extends dataSource{
         return codRespuesta;
     }
     
-    public String actualizarEmpleado(empleado objEmpleado) {
+    public String actualizarEmpleado(Empleado objEmpleado) {
         Connection con = getConexion();
         String codRespuesta;
         
@@ -167,7 +167,7 @@ public class daoEmpleados extends dataSource{
         return codRespuesta;
     }
     
-    public String crearEmpleado(empleado objEmpleado) {
+    public String crearEmpleado(Empleado objEmpleado) {
         Connection con = getConexion();
         String codRespuesta;
         

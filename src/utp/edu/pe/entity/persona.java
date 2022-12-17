@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class persona {
+public class Persona {
     
     Integer id;
     String nombre;

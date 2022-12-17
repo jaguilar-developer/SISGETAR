@@ -4,12 +4,12 @@
  */
 package utp.edu.pe.app.empleado;
 
-import javax.swing.JFormattedTextField;
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
+import static utp.edu.pe.app.frmPrincipal.content;
 import utp.edu.pe.dao.daoEmpleados;
-import utp.edu.pe.entity.empleado;
+import utp.edu.pe.entity.Empleado;
 
 /**
  *
@@ -124,10 +124,19 @@ public class crearEmpleado extends javax.swing.JPanel {
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         guardarEmpleado();
         limpiarCajas();
+        
+        mainEmpleado mainEmpleado = new mainEmpleado();
+        mainEmpleado.setSize(770, 700);
+        mainEmpleado.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(mainEmpleado, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_btnGuardarMouseClicked
     
     public void guardarEmpleado() {        
-        empleado objEmpleado = new empleado();
+        Empleado objEmpleado = new Empleado();
         daoEmpleados empleadoDatos = new daoEmpleados();
         String msjRespuesta;
         

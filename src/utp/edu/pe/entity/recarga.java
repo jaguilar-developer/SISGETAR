@@ -10,12 +10,12 @@ import java.util.Date;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class recarga {
+public class Recarga {
     
     Integer idRecarga;
     Integer nroRecarga;
     Integer nroCarne;
-    Double montoRecarga;
+    Float montoRecarga;
 
     public Integer getIdRecarga() {
         return idRecarga;
@@ -41,11 +41,11 @@ public class recarga {
         this.nroCarne = nroCarne;
     }
 
-    public Double getMontoRecarga() {
+    public Float getMontoRecarga() {
         return montoRecarga;
     }
 
-    public void setMontoRecarga(Double montoRecarga) {
+    public void setMontoRecarga(Float montoRecarga) {
         this.montoRecarga = montoRecarga;
     }
 

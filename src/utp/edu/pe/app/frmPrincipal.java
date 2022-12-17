@@ -6,8 +6,11 @@ package utp.edu.pe.app;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import utp.edu.pe.app.empleado.listarEmpleado;
+import utp.edu.pe.app.empleado.mainEmpleado;
+import utp.edu.pe.app.pasajero.mainPasajero;
 import utp.edu.pe.app.recarga.mainRecarga;
+import utp.edu.pe.app.tarjeta.mainTarjeta;
+import utp.edu.pe.entity.Usuario;
 
 /**
  *
@@ -41,6 +44,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnPasajeros = new javax.swing.JLabel();
         panelRecargas = new javax.swing.JPanel();
         btnRecargas = new javax.swing.JLabel();
+        panelTarjetas = new javax.swing.JPanel();
+        btnTarjetas = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblRol = new javax.swing.JLabel();
+        lblNroDoc = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,7 +152,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         btnRecargas.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         btnRecargas.setForeground(new java.awt.Color(255, 255, 255));
-        btnRecargas.setText("RECARGAS");
+        btnRecargas.setText("CARNE / RECARGAS");
         btnRecargas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRecargas.setMaximumSize(new java.awt.Dimension(230, 40));
         btnRecargas.setMinimumSize(new java.awt.Dimension(230, 40));
@@ -177,6 +185,54 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        panelTarjetas.setBackground(new java.awt.Color(0, 102, 204));
+        panelTarjetas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelTarjetas.setMaximumSize(new java.awt.Dimension(230, 40));
+        panelTarjetas.setMinimumSize(new java.awt.Dimension(230, 40));
+        panelTarjetas.setPreferredSize(new java.awt.Dimension(230, 40));
+        panelTarjetas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTarjetasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTarjetasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelTarjetasMouseExited(evt);
+            }
+        });
+
+        btnTarjetas.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnTarjetas.setForeground(new java.awt.Color(255, 255, 255));
+        btnTarjetas.setText("TARJETAS");
+        btnTarjetas.setMaximumSize(new java.awt.Dimension(230, 40));
+        btnTarjetas.setMinimumSize(new java.awt.Dimension(230, 40));
+        btnTarjetas.setPreferredSize(new java.awt.Dimension(230, 40));
+
+        javax.swing.GroupLayout panelTarjetasLayout = new javax.swing.GroupLayout(panelTarjetas);
+        panelTarjetas.setLayout(panelTarjetasLayout);
+        panelTarjetasLayout.setHorizontalGroup(
+            panelTarjetasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTarjetasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelTarjetasLayout.setVerticalGroup(
+            panelTarjetasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnTarjetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        lblUsuario.setFont(new java.awt.Font("Roboto", 2, 10)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("lblUsuario");
+
+        lblRol.setFont(new java.awt.Font("Roboto", 2, 10)); // NOI18N
+        lblRol.setForeground(new java.awt.Color(255, 255, 255));
+        lblRol.setText("lblRol");
+
+        lblNroDoc.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -188,10 +244,19 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(89, 89, 89))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRecargas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNroDoc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRecargas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTarjetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -210,7 +275,14 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(panelPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRecargas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNroDoc))
+                .addContainerGap())
         );
 
         Background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 700));
@@ -257,7 +329,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseClicked
-        listarEmpleado lstEmpleado = new listarEmpleado();
+        mainEmpleado lstEmpleado = new mainEmpleado();
         lstEmpleado.setSize(770,700);
         lstEmpleado.setLocation(0,0); 
         
@@ -278,12 +350,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPasajerosMouseExited
 
     private void btnPasajerosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPasajerosMouseClicked
-        listarEmpleado lstEmpleado = new listarEmpleado();
-        lstEmpleado.setSize(770,700);
-        lstEmpleado.setLocation(0,0); 
+        mainPasajero lstPasajero = new mainPasajero();
+        lstPasajero.setSize(770,700);
+        lstPasajero.setLocation(0,0); 
         
         content.removeAll();
-        content.add(lstEmpleado, BorderLayout.CENTER);
+        content.add(lstPasajero, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnPasajerosMouseClicked
@@ -301,7 +373,11 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnRecargasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecargasMouseClicked
         mainRecarga mainRecarga = new mainRecarga();
         mainRecarga.setSize(770,700);
-        mainRecarga.setLocation(0,0); 
+        mainRecarga.setLocation(0,0);
+        
+        if(lblRol.getText().equals("PASAJERO")) {
+            mainRecarga.buscarPasajero(lblNroDoc.getText());            
+        }
         
         content.removeAll();
         content.add(mainRecarga, BorderLayout.CENTER);
@@ -309,6 +385,38 @@ public class frmPrincipal extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_btnRecargasMouseClicked
 
+    private void panelTarjetasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTarjetasMouseExited
+        panelTarjetas.setBackground(new Color(0,102,204));
+        btnTarjetas.setForeground(Color.WHITE);
+    }//GEN-LAST:event_panelTarjetasMouseExited
+
+    private void panelTarjetasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTarjetasMouseEntered
+        panelTarjetas.setBackground(Color.WHITE);
+        btnTarjetas.setForeground(new Color(0,102,204));
+    }//GEN-LAST:event_panelTarjetasMouseEntered
+
+    private void panelTarjetasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTarjetasMouseClicked
+        mainTarjeta lstTarjeta = new mainTarjeta();
+        lstTarjeta.setSize(770,700);
+        lstTarjeta.setLocation(0,0); 
+        
+        content.removeAll();
+        content.add(lstTarjeta, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_panelTarjetasMouseClicked
+
+    public void cargarPerfil(Usuario objUsuario) {
+        if (objUsuario.getRol().toUpperCase().equals("PASAJERO")) {
+            panelEmpleados.setVisible(false);
+            panelPasajeros.setVisible(false);
+        }
+        
+        lblUsuario.setText(objUsuario.getUsuario());
+        lblRol.setText(objUsuario.getRol());
+        lblNroDoc.setText(objUsuario.getNumeroDocumento());
+        lblNroDoc.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -349,12 +457,17 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnEmpleados;
     private javax.swing.JLabel btnPasajeros;
     private javax.swing.JLabel btnRecargas;
+    private javax.swing.JLabel btnTarjetas;
     public static javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblNroDoc;
+    public static javax.swing.JLabel lblRol;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelEmpleados;
     private javax.swing.JPanel panelPasajeros;
     private javax.swing.JPanel panelRecargas;
+    private javax.swing.JPanel panelTarjetas;
     // End of variables declaration//GEN-END:variables
 }

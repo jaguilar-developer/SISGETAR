@@ -5,30 +5,32 @@
 package utp.edu.pe.app.recarga;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import utp.edu.pe.dao.daoCarnes;
-import utp.edu.pe.dao.daoRecargas;
-import utp.edu.pe.entity.Carne;
-import utp.edu.pe.entity.Recarga;
 import static utp.edu.pe.app.frmPrincipal.content;
-import static utp.edu.pe.app.frmPrincipal.lblRol;
+import utp.edu.pe.dao.daoTarjetas;
+import utp.edu.pe.entity.Tarjeta;
+import java.util.List;
+import javax.swing.JOptionPane;
+import utp.edu.pe.entity.Carne;
 
 /**
  *
  * @author Jerry Aguilar - U21229611
  */
-public class recargarCarne extends javax.swing.JPanel {
+public class crearCarne extends javax.swing.JPanel {
 
     /**
-     * Creates new form recargarCarne
+     * Creates new form crearCarne
      */
     
-    static Boolean rolPasajero = lblRol.getText().equals("PASAJERO");
+    static List<Tarjeta> lstTarjetas = new ArrayList();
     
-    public recargarCarne() {        
+    public crearCarne() {        
         initComponents();
+        cargarTarjetas();
     }
 
     /**
@@ -45,13 +47,14 @@ public class recargarCarne extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         txtNroCarne = new javax.swing.JTextField();
-        txtSaldo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtMontoRecarga = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JLabel();
         txtNroDocumento = new javax.swing.JLabel();
+        generarNroCarne = new javax.swing.JLabel();
+        txtMontoPasaje = new javax.swing.JTextField();
+        cboTipoTarjeta = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(770, 700));
@@ -60,21 +63,21 @@ public class recargarCarne extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel1.setText("Recargar Carne");
+        jLabel1.setText("Crear Carne");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setText("NRO CARNE:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 95, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 41, 758, 10));
 
-        jLabel3.setText("SALDO ACTUAL:");
+        jLabel3.setText("TIPO TARJETA:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 175, -1, -1));
-        add(txtNroCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 117, 687, 40));
-        add(txtSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 197, 320, 40));
 
-        jLabel4.setText("MONTO RECARGA:");
+        txtNroCarne.setEnabled(false);
+        add(txtNroCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 117, 620, 40));
+
+        jLabel4.setText("MONTO PASAJE:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 175, -1, -1));
-        add(txtMontoRecarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 197, 320, 40));
 
         jLabel9.setText("DESCRIPCION :");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
@@ -91,10 +94,28 @@ public class recargarCarne extends javax.swing.JPanel {
 
         txtNroDocumento.setText("txtNroDocumento");
         add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        generarNroCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/resources/boton-actualizar.png"))); // NOI18N
+        generarNroCarne.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        generarNroCarne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generarNroCarneMouseClicked(evt);
+            }
+        });
+        add(generarNroCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
+        add(txtMontoPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
+
+        cboTipoTarjeta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cboTipoTarjeta.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTipoTarjetaItemStateChanged(evt);
+            }
+        });
+        add(cboTipoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        recargarCarne();
+        crearCarne();
         limpiarCajas();
         
         mainRecarga mainRecarga = new mainRecarga();
@@ -108,47 +129,59 @@ public class recargarCarne extends javax.swing.JPanel {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void generarNroCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generarNroCarneMouseClicked
+        generarCarne();
+    }//GEN-LAST:event_generarNroCarneMouseClicked
+
+    private void cboTipoTarjetaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTipoTarjetaItemStateChanged
+        
+        int index = cboTipoTarjeta.getSelectedIndex();
+        
+        if (index<1) {
+            txtMontoPasaje.setText("");
+            txtDescripcion.setText("");
+        } else {
+            txtMontoPasaje.setText(String.valueOf(lstTarjetas.get(cboTipoTarjeta.getSelectedIndex()-1).getMontoPasaje()));
+            txtDescripcion.setText(String.valueOf(lstTarjetas.get(cboTipoTarjeta.getSelectedIndex()-1).getDescripcion()));
+        }        
+    }//GEN-LAST:event_cboTipoTarjetaItemStateChanged
     
-    public void recargarCarne() {        
-        Recarga objRecarga = new Recarga();        
-        daoRecargas daoRecargas = new daoRecargas();
-        String msjRespuesta = "";
-        String pago = "";
+    public void crearCarne() {        
+        Carne objCarne = new Carne();
+        daoCarnes carneDatos = new daoCarnes();
+        String msjRespuesta;
         
-        objRecarga.setNroCarne(Integer.valueOf(txtNroCarne.getText()));
-        objRecarga.setMontoRecarga(Float.valueOf(txtMontoRecarga.getText()));
+        objCarne.setNroCarne(Integer.valueOf(txtNroCarne.getText()));
+        objCarne.setNumeroDocumento(txtNroDocumento.getText());
+        objCarne.setIdTarjeta(cboTipoTarjeta.getSelectedIndex());
         
-        if(rolPasajero){
-            pago = JOptionPane.showInputDialog(this, "Ingrese el numero de pago", "Pago", JOptionPane.YES_OPTION);
-        }
-        
-        if(rolPasajero && pago.length()>=1){
-            msjRespuesta = daoRecargas.crearRecarga(objRecarga);
-        }
-        
-        if (!rolPasajero) {
-            msjRespuesta = daoRecargas.crearRecarga(objRecarga);
-        }
-        
-        JOptionPane.showMessageDialog(this, msjRespuesta);        
+        msjRespuesta = carneDatos.crearCarne(objCarne);
+        JOptionPane.showMessageDialog(this, msjRespuesta);
     }
     
-    public void cargarCarne(int nroCarne, String nroDocumento) {        
+    public void generarCarne() {
+        daoCarnes carneDatos = new daoCarnes();        
+        int nroCarne = carneDatos.generarCarne();
+        String nroCarneFormat = String.format("%0" + 15 + "d", nroCarne);
         
-        daoCarnes daoCarne = new daoCarnes();
-        Carne objCarne = daoCarne.buscarCarne(nroCarne);
-        
-        txtNroCarne.setText(objCarne.getNroCarne().toString());
-        txtDescripcion.setText(objCarne.getDescripcion());
-        txtSaldo.setText(objCarne.getSaldo().toString());
+        txtNroCarne.setText(nroCarneFormat);
+    }
+    
+    public void cargarDocumento(String nroDocumento) {        
         
         txtNroDocumento.setVisible(false);
         txtNroDocumento.setText(nroDocumento);
         
-        txtNroCarne.setEnabled(false);
-        txtDescripcion.setEnabled(false);
-        txtSaldo.setEnabled(false);
+    }
+    
+    private void cargarTarjetas() {
+        daoTarjetas tarjetaDatos = new daoTarjetas();
+        lstTarjetas = tarjetaDatos.listaTarjetas();
         
+        for (int i=0;i<lstTarjetas.size();i++) {            
+            cboTipoTarjeta.addItem(lstTarjetas.get(i).getServicio());            
+        }
     }
     
     private void limpiarCajas() {
@@ -171,6 +204,8 @@ public class recargarCarne extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnGuardar;
+    private javax.swing.JComboBox<String> cboTipoTarjeta;
+    private javax.swing.JLabel generarNroCarne;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -178,9 +213,8 @@ public class recargarCarne extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtMontoRecarga;
+    private javax.swing.JTextField txtMontoPasaje;
     private javax.swing.JTextField txtNroCarne;
     private javax.swing.JLabel txtNroDocumento;
-    private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

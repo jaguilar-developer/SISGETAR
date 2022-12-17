@@ -4,14 +4,15 @@
  */
 package utp.edu.pe.app.recarga;
 
-import utp.edu.pe.app.empleado.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static utp.edu.pe.app.frmPrincipal.content;
+import static utp.edu.pe.app.frmPrincipal.lblRol;
 import utp.edu.pe.dao.daoCarnes;
-import utp.edu.pe.entity.carne;
+import utp.edu.pe.entity.Carne;
 
 /**
  *
@@ -22,6 +23,8 @@ public class mainRecarga extends javax.swing.JPanel {
     /**
      * Creates new form listarEmpleado
      */
+    static Boolean rolPasajero = lblRol.getText().equals("PASAJERO");
+    
     public mainRecarga() {
         initComponents();
     }
@@ -43,6 +46,8 @@ public class mainRecarga extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         btnRecargar = new javax.swing.JLabel();
+        panelCrearCarne = new javax.swing.JPanel();
+        btnCrearCarne = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(770, 700));
@@ -126,7 +131,6 @@ public class mainRecarga extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(100, 40));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 40));
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRecargar.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         btnRecargar.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,7 +140,55 @@ public class mainRecarga extends javax.swing.JPanel {
                 btnRecargarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnRecargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRecargar)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelCrearCarne.setBackground(new java.awt.Color(0, 102, 204));
+        panelCrearCarne.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelCrearCarne.setMaximumSize(new java.awt.Dimension(100, 40));
+        panelCrearCarne.setMinimumSize(new java.awt.Dimension(100, 40));
+        panelCrearCarne.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        btnCrearCarne.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        btnCrearCarne.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearCarne.setText("CREAR CARNE");
+        btnCrearCarne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCrearCarneMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCrearCarneLayout = new javax.swing.GroupLayout(panelCrearCarne);
+        panelCrearCarne.setLayout(panelCrearCarneLayout);
+        panelCrearCarneLayout.setHorizontalGroup(
+            panelCrearCarneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCrearCarneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCrearCarne, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelCrearCarneLayout.setVerticalGroup(
+            panelCrearCarneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearCarneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCrearCarne, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,7 +210,10 @@ public class mainRecarga extends javax.swing.JPanel {
                                     .addComponent(txtBuscarPasajero)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnBuscarPasajero)))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(panelCrearCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,7 +230,9 @@ public class mainRecarga extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelCrearCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -188,20 +245,7 @@ public class mainRecarga extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarPasajeroMouseClicked
 
     private void btnBuscarPasajeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarPasajeroMouseClicked
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblCarnes.getModel();
-        modeloTabla.setRowCount(0);
-        daoCarnes carneDatos = new daoCarnes();
-        List<carne> lstCarnes = carneDatos.buscarCarnesXnroDocumento(txtBuscarPasajero.getText());        
-        String datos[] = new String[5];
-        
-        for (int i=0;i<lstCarnes.size();i++) {
-            datos[0] = lstCarnes.get(i).getNumeroDocumento();
-            datos[1] = lstCarnes.get(i).getPasajero();            
-            datos[2] = lstCarnes.get(i).getDescripcionTarjeta();
-            datos[3] = lstCarnes.get(i).getNroCarne().toString();
-            datos[4] = lstCarnes.get(i).getSaldo().toString();
-            modeloTabla.addRow(datos);
-        }
+        buscarPasajero("");
     }//GEN-LAST:event_btnBuscarPasajeroMouseClicked
 
     private void tblCarnesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCarnesMouseClicked
@@ -211,6 +255,46 @@ public class mainRecarga extends javax.swing.JPanel {
         }        
     }//GEN-LAST:event_tblCarnesMouseClicked
 
+    public void buscarPasajero(String nroDocumento) {
+        if (nroDocumento.length()>=1) {
+            txtBuscarPasajero.setText(nroDocumento);
+            txtBuscarPasajero.setEnabled(!rolPasajero);
+            DefaultTableModel modeloTabla = (DefaultTableModel) tblCarnes.getModel();
+            modeloTabla.setRowCount(0);
+            daoCarnes carneDatos = new daoCarnes();
+            List<Carne> lstCarnes = carneDatos.buscarCarnesXnroDocumento(nroDocumento);        
+            String datos[] = new String[5];
+        
+            for (int i=0;i<lstCarnes.size();i++) {
+                datos[0] = lstCarnes.get(i).getNumeroDocumento();
+                datos[1] = lstCarnes.get(i).getPasajero();            
+                datos[2] = lstCarnes.get(i).getDescripcionTarjeta();
+                datos[3] = lstCarnes.get(i).getNroCarne().toString();
+                datos[4] = lstCarnes.get(i).getSaldo().toString();
+                modeloTabla.addRow(datos);
+            }
+        } else {
+            DefaultTableModel modeloTabla = (DefaultTableModel) tblCarnes.getModel();
+            modeloTabla.setRowCount(0);
+            daoCarnes carneDatos = new daoCarnes();
+            List<Carne> lstCarnes = carneDatos.buscarCarnesXnroDocumento(txtBuscarPasajero.getText());        
+            String datos[] = new String[5];
+        
+            for (int i=0;i<lstCarnes.size();i++) {
+                datos[0] = lstCarnes.get(i).getNumeroDocumento();
+                datos[1] = lstCarnes.get(i).getPasajero();            
+                datos[2] = lstCarnes.get(i).getDescripcionTarjeta();
+                datos[3] = lstCarnes.get(i).getNroCarne().toString();
+                datos[4] = lstCarnes.get(i).getSaldo().toString();
+                modeloTabla.addRow(datos);
+            }
+        }
+        
+        if(rolPasajero){
+            panelCrearCarne.setVisible(false);
+        }
+    }
+    
     private void btnRecargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecargarMouseClicked
         recargarCarne recargarCarne = new recargarCarne();
         recargarCarne.setSize(770, 700);
@@ -219,22 +303,43 @@ public class mainRecarga extends javax.swing.JPanel {
         int fila = tblCarnes.getSelectedRow();
         int nroCarne = Integer.parseInt(tblCarnes.getValueAt(fila, 3).toString());        
         
-        recargarCarne.cargarCarne(nroCarne);
+        if (nroCarne < 1 ) {
+            JOptionPane.showMessageDialog(this, "EL PASAJERO NO TIENE CARNET");        
+        } else {        
+            recargarCarne.cargarCarne(nroCarne, txtBuscarPasajero.getText());
+            content.removeAll();
+            content.add(recargarCarne, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }
+    }//GEN-LAST:event_btnRecargarMouseClicked
+
+    private void btnCrearCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearCarneMouseClicked
+        crearCarne crearCarne = new crearCarne();
+        crearCarne.setSize(770, 700);
+        crearCarne.setLocation(0,0);
         
+        int fila = tblCarnes.getSelectedRow();
+        String nroDocumento = tblCarnes.getValueAt(fila, 0).toString();
+
+        crearCarne.cargarDocumento(nroDocumento);
         content.removeAll();
-        content.add(recargarCarne, BorderLayout.CENTER);
+        content.add(crearCarne, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-    }//GEN-LAST:event_btnRecargarMouseClicked
+              
+    }//GEN-LAST:event_btnCrearCarneMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnBuscarPasajero;
+    private javax.swing.JLabel btnCrearCarne;
     private javax.swing.JLabel btnRecargar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel panelCrearCarne;
     private javax.swing.JTable tblCarnes;
     private javax.swing.JTextField txtBuscarPasajero;
     // End of variables declaration//GEN-END:variables

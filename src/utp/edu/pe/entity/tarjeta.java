@@ -8,7 +8,7 @@ package utp.edu.pe.entity;
  *
  * @author Jerry Aguilar - U21229611
  */
-public class tarjeta {
+public class Tarjeta {
     
     Integer idTarjeta;
     String servicio;
