@@ -55,6 +55,9 @@ public class crearCarne extends javax.swing.JPanel {
         generarNroCarne = new javax.swing.JLabel();
         txtMontoPasaje = new javax.swing.JTextField();
         cboTipoTarjeta = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtSaldoCarne = new javax.swing.JTextField();
+        recuperarSaldo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(770, 700));
@@ -93,7 +96,7 @@ public class crearCarne extends javax.swing.JPanel {
         add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 610, -1, -1));
 
         txtNroDocumento.setText("txtNroDocumento");
-        add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
 
         generarNroCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/resources/boton-actualizar.png"))); // NOI18N
         generarNroCarne.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,6 +115,21 @@ public class crearCarne extends javax.swing.JPanel {
             }
         });
         add(cboTipoTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, 40));
+
+        jLabel5.setText("RECUPERAR SALDO POR SINIESTRO: ");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        txtSaldoCarne.setEnabled(false);
+        add(txtSaldoCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 610, 40));
+
+        recuperarSaldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/resources/recuperarse.png"))); // NOI18N
+        recuperarSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recuperarSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recuperarSaldoMouseClicked(evt);
+            }
+        });
+        add(recuperarSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -146,6 +164,17 @@ public class crearCarne extends javax.swing.JPanel {
             txtDescripcion.setText(String.valueOf(lstTarjetas.get(cboTipoTarjeta.getSelectedIndex()-1).getDescripcion()));
         }        
     }//GEN-LAST:event_cboTipoTarjetaItemStateChanged
+
+    private void recuperarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperarSaldoMouseClicked
+        recuperarSaldoSiniestro();
+    }//GEN-LAST:event_recuperarSaldoMouseClicked
+    
+    private void recuperarSaldoSiniestro() {
+        daoCarnes carneDatos = new daoCarnes();
+        Float ultimoSaldo = carneDatos.recuperarSaldoSiniestro(txtNroDocumento.getText(), cboTipoTarjeta.getSelectedIndex());
+        
+        txtSaldoCarne.setText(String.valueOf(ultimoSaldo));
+    }
     
     public void crearCarne() {        
         Carne objCarne = new Carne();
@@ -155,6 +184,7 @@ public class crearCarne extends javax.swing.JPanel {
         objCarne.setNroCarne(Integer.valueOf(txtNroCarne.getText()));
         objCarne.setNumeroDocumento(txtNroDocumento.getText());
         objCarne.setIdTarjeta(cboTipoTarjeta.getSelectedIndex());
+        objCarne.setSaldo(Float.valueOf(txtSaldoCarne.getText()));
         
         msjRespuesta = carneDatos.crearCarne(objCarne);
         JOptionPane.showMessageDialog(this, msjRespuesta);
@@ -210,11 +240,14 @@ public class crearCarne extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel recuperarSaldo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtMontoPasaje;
     private javax.swing.JTextField txtNroCarne;
     private javax.swing.JLabel txtNroDocumento;
+    private javax.swing.JTextField txtSaldoCarne;
     // End of variables declaration//GEN-END:variables
 }

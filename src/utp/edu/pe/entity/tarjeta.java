@@ -16,7 +16,9 @@ public class Tarjeta {
     Boolean estado;
 
     public Integer getIdTarjeta() {
+        
         return idTarjeta;
+        
     }
 
     public void setIdTarjeta(Integer idTarjeta) {

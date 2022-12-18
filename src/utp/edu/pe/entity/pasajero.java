@@ -15,7 +15,9 @@ public class Pasajero extends Persona {
     Boolean estado;
 
     public Integer getIdPasajero() {
+        
         return idPasajero;
+        
     }
 
     public void setIdPasajero(Integer idPasajero) {

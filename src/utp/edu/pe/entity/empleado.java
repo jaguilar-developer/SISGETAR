@@ -13,10 +13,12 @@ public class Empleado extends Persona {
     Integer idEmpleado;
     String cargo;
     Double calificacion;
-    Boolean estado;
+    Boolean estado; 
 
     public Integer getIdEmpleado() {
+        
         return idEmpleado;
+        
     }
 
     public void setIdEmpleado(Integer idEmpleado) {

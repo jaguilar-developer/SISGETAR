@@ -19,7 +19,7 @@ public class Carne {
     Date fechaVigente;
     Float saldo;
     String descripcion;
-    Boolean estado;    
+    String estado;    
     
     //para armar la vista
     String numeroDocumento;
@@ -82,11 +82,11 @@ public class Carne {
         this.descripcion = descripcion;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

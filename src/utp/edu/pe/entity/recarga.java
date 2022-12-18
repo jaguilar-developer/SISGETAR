@@ -18,7 +18,9 @@ public class Recarga {
     Float montoRecarga;
 
     public Integer getIdRecarga() {
+        
         return idRecarga;
+        
     }
 
     public void setIdRecarga(Integer idRecarga) {

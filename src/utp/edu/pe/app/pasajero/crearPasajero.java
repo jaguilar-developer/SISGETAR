@@ -37,24 +37,24 @@ public class crearPasajero extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        txtNombreEmpleado = new javax.swing.JTextField();
-        txtApePatEmpleado = new javax.swing.JTextField();
+        txtNombrePasajero = new javax.swing.JTextField();
+        txtApePatPasajero = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtApeMatEmpleado = new javax.swing.JTextField();
+        txtApeMatPasajero = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNroDocEmpleado = new javax.swing.JTextField();
-        txtTipoDocEmpleado = new javax.swing.JComboBox<>();
+        txtNroDocPasajero = new javax.swing.JTextField();
+        txtTipoDocPasajero = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtNroTelefono1Empleado = new javax.swing.JTextField();
-        txtNroTelefono2Empleado = new javax.swing.JTextField();
+        txtNroTelefono1Pasajero = new javax.swing.JTextField();
+        txtNroTelefono2Pasajero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtEmailEmpleado = new javax.swing.JTextField();
+        txtEmailPasajero = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtCargoEmpleado = new javax.swing.JComboBox<>();
+        txtEstudiantePasajero = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        txtFNacimientoEmpleado = new javax.swing.JFormattedTextField();
+        txtFNacimientoPasajero = new javax.swing.JFormattedTextField();
         btnGuardar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -73,44 +73,44 @@ public class crearPasajero extends javax.swing.JPanel {
 
         jLabel3.setText("APELLIDO PATERNO :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 175, -1, -1));
-        add(txtNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 117, 687, 40));
-        add(txtApePatEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 197, 320, 40));
+        add(txtNombrePasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 117, 687, 40));
+        add(txtApePatPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 197, 320, 40));
 
         jLabel4.setText("APELLIDO MATERNO :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 175, -1, -1));
-        add(txtApeMatEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 197, 320, 40));
+        add(txtApeMatPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 197, 320, 40));
 
         jLabel5.setText("TIPO DOCUMENTO :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 255, -1, -1));
 
         jLabel6.setText("NÚMERO DOCUMENTO :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 255, -1, -1));
-        add(txtNroDocEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 277, 320, 40));
+        add(txtNroDocPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 277, 320, 40));
 
-        txtTipoDocEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "DNI", "RUC", "CE" }));
-        add(txtTipoDocEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 277, 320, 40));
+        txtTipoDocPasajero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "DNI", "RUC", "CE" }));
+        add(txtTipoDocPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 277, 320, 40));
 
         jLabel7.setText("TELÉFONO 1 :");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 335, -1, -1));
 
         jLabel8.setText("TELÉFONO 2 :");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 335, -1, -1));
-        add(txtNroTelefono1Empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 357, 320, 40));
-        add(txtNroTelefono2Empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 357, 320, 40));
+        add(txtNroTelefono1Pasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 357, 320, 40));
+        add(txtNroTelefono2Pasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 357, 320, 40));
 
         jLabel9.setText("CORREO :");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 415, -1, -1));
-        add(txtEmailEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 437, 687, 40));
+        add(txtEmailPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 437, 687, 40));
 
-        jLabel10.setText("CARGO :");
+        jLabel10.setText("ESTUDIANTE :");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 495, -1, -1));
 
-        txtCargoEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "ADMIN", "USUARIO" }));
-        add(txtCargoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 517, 320, 40));
+        txtEstudiantePasajero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "SI", "NO" }));
+        add(txtEstudiantePasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 517, 320, 40));
 
         jLabel11.setText("FECHA NACIMIENTO :");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 495, -1, -1));
-        add(txtFNacimientoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 517, 321, 40));
+        add(txtFNacimientoPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 517, 321, 40));
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utp/edu/pe/resources/salvar.png"))); // NOI18N
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,16 +140,16 @@ public class crearPasajero extends javax.swing.JPanel {
         daoPasajeros pasajeroDatos = new daoPasajeros();
         String msjRespuesta;
         
-        objPasajero.setNombre(txtNombreEmpleado.getText());
-        objPasajero.setApellidoPat(txtApePatEmpleado.getText());
-        objPasajero.setApellidoMat(txtApeMatEmpleado.getText());
-        objPasajero.setTipoDocumento(txtTipoDocEmpleado.getSelectedItem().toString());
-        objPasajero.setEstudiante(txtCargoEmpleado.getSelectedItem().toString());
-        objPasajero.setEmail(txtEmailEmpleado.getText());
+        objPasajero.setNombre(txtNombrePasajero.getText());
+        objPasajero.setApellidoPat(txtApePatPasajero.getText());
+        objPasajero.setApellidoMat(txtApeMatPasajero.getText());
+        objPasajero.setTipoDocumento(txtTipoDocPasajero.getSelectedItem().toString());
+        objPasajero.setEstudiante(txtEstudiantePasajero.getSelectedItem().toString());
+        objPasajero.setEmail(txtEmailPasajero.getText());
         //objPasajero.setFechaNacimiento(fNacimiento);
-        objPasajero.setNumeroDocumento(txtNroDocEmpleado.getText());
-        objPasajero.setNroTelefono1(txtNroTelefono1Empleado.getText());
-        objPasajero.setNroTelefono2(txtNroTelefono2Empleado.getText());
+        objPasajero.setNumeroDocumento(txtNroDocPasajero.getText());
+        objPasajero.setNroTelefono1(txtNroTelefono1Pasajero.getText());
+        objPasajero.setNroTelefono2(txtNroTelefono2Pasajero.getText());
         
         msjRespuesta = pasajeroDatos.crearPasajero(objPasajero);
         JOptionPane.showMessageDialog(this, msjRespuesta);
@@ -179,15 +179,15 @@ public class crearPasajero extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtApeMatEmpleado;
-    private javax.swing.JTextField txtApePatEmpleado;
-    private javax.swing.JComboBox<String> txtCargoEmpleado;
-    private javax.swing.JTextField txtEmailEmpleado;
-    private javax.swing.JFormattedTextField txtFNacimientoEmpleado;
-    private javax.swing.JTextField txtNombreEmpleado;
-    private javax.swing.JTextField txtNroDocEmpleado;
-    private javax.swing.JTextField txtNroTelefono1Empleado;
-    private javax.swing.JTextField txtNroTelefono2Empleado;
-    private javax.swing.JComboBox<String> txtTipoDocEmpleado;
+    private javax.swing.JTextField txtApeMatPasajero;
+    private javax.swing.JTextField txtApePatPasajero;
+    private javax.swing.JTextField txtEmailPasajero;
+    private javax.swing.JComboBox<String> txtEstudiantePasajero;
+    private javax.swing.JFormattedTextField txtFNacimientoPasajero;
+    private javax.swing.JTextField txtNombrePasajero;
+    private javax.swing.JTextField txtNroDocPasajero;
+    private javax.swing.JTextField txtNroTelefono1Pasajero;
+    private javax.swing.JTextField txtNroTelefono2Pasajero;
+    private javax.swing.JComboBox<String> txtTipoDocPasajero;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,11 +49,11 @@ public class Historial {
         this.motivo = motivo;
     }
 
-    public Double getSaldoActual() {
+    public Float getSaldoActual() {
         return saldoActual;
     }
 
-    public void setSaldoActual(Double saldoActual) {
+    public void setSaldoActual(Float saldoActual) {
         this.saldoActual = saldoActual;
     }
 
@@ -64,7 +64,7 @@ public class Historial {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    Double saldoActual;
+    Float saldoActual;
     String descripcion;
     
 }

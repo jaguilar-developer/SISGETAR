@@ -17,11 +17,15 @@ public class Usuario extends Persona {
     Boolean estado;    
 
     public Integer getIdUsuario() {
+        
         return idUsuario;
+        
     }
 
     public void setIdUsuario(Integer idUsuario) {
+        
         this.idUsuario = idUsuario;
+        
     }
 
     public String getUsuario() {

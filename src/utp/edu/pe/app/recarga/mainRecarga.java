@@ -48,6 +48,8 @@ public class mainRecarga extends javax.swing.JPanel {
         btnRecargar = new javax.swing.JLabel();
         panelCrearCarne = new javax.swing.JPanel();
         btnCrearCarne = new javax.swing.JLabel();
+        panelSiniestro = new javax.swing.JPanel();
+        btnSiniestro = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(770, 700));
@@ -56,33 +58,33 @@ public class mainRecarga extends javax.swing.JPanel {
         tblCarnes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblCarnes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Documento", "Pasajero", "Descripcion", "NroCarne", "SaldoActual"
+                "Documento", "Pasajero", "Descripcion", "NroCarne", "SaldoActual", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -106,6 +108,7 @@ public class mainRecarga extends javax.swing.JPanel {
             tblCarnes.getColumnModel().getColumn(2).setResizable(false);
             tblCarnes.getColumnModel().getColumn(3).setResizable(false);
             tblCarnes.getColumnModel().getColumn(4).setResizable(false);
+            tblCarnes.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -154,7 +157,7 @@ public class mainRecarga extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -186,7 +189,36 @@ public class mainRecarga extends javax.swing.JPanel {
             panelCrearCarneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCrearCarneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCrearCarne, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(btnCrearCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelSiniestro.setBackground(new java.awt.Color(255, 0, 51));
+        panelSiniestro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnSiniestro.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        btnSiniestro.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiniestro.setText("SINIESTRO");
+        btnSiniestro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSiniestroMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSiniestroLayout = new javax.swing.GroupLayout(panelSiniestro);
+        panelSiniestro.setLayout(panelSiniestroLayout);
+        panelSiniestroLayout.setHorizontalGroup(
+            panelSiniestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSiniestroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSiniestro, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelSiniestroLayout.setVerticalGroup(
+            panelSiniestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSiniestroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSiniestro, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -213,7 +245,9 @@ public class mainRecarga extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(panelCrearCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(panelSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -229,11 +263,12 @@ public class mainRecarga extends javax.swing.JPanel {
                     .addComponent(txtBuscarPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelCrearCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCrearCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,7 +298,7 @@ public class mainRecarga extends javax.swing.JPanel {
             modeloTabla.setRowCount(0);
             daoCarnes carneDatos = new daoCarnes();
             List<Carne> lstCarnes = carneDatos.buscarCarnesXnroDocumento(nroDocumento);        
-            String datos[] = new String[5];
+            String datos[] = new String[6];
         
             for (int i=0;i<lstCarnes.size();i++) {
                 datos[0] = lstCarnes.get(i).getNumeroDocumento();
@@ -271,6 +306,7 @@ public class mainRecarga extends javax.swing.JPanel {
                 datos[2] = lstCarnes.get(i).getDescripcionTarjeta();
                 datos[3] = lstCarnes.get(i).getNroCarne().toString();
                 datos[4] = lstCarnes.get(i).getSaldo().toString();
+                datos[5] = lstCarnes.get(i).getEstado();
                 modeloTabla.addRow(datos);
             }
         } else {
@@ -278,7 +314,7 @@ public class mainRecarga extends javax.swing.JPanel {
             modeloTabla.setRowCount(0);
             daoCarnes carneDatos = new daoCarnes();
             List<Carne> lstCarnes = carneDatos.buscarCarnesXnroDocumento(txtBuscarPasajero.getText());        
-            String datos[] = new String[5];
+            String datos[] = new String[6];
         
             for (int i=0;i<lstCarnes.size();i++) {
                 datos[0] = lstCarnes.get(i).getNumeroDocumento();
@@ -286,12 +322,14 @@ public class mainRecarga extends javax.swing.JPanel {
                 datos[2] = lstCarnes.get(i).getDescripcionTarjeta();
                 datos[3] = lstCarnes.get(i).getNroCarne().toString();
                 datos[4] = lstCarnes.get(i).getSaldo().toString();
+                datos[5] = lstCarnes.get(i).getEstado();
                 modeloTabla.addRow(datos);
             }
         }
         
         if(rolPasajero){
             panelCrearCarne.setVisible(false);
+            panelSiniestro.setVisible(false);
         }
     }
     
@@ -320,26 +358,52 @@ public class mainRecarga extends javax.swing.JPanel {
         crearCarne.setLocation(0,0);
         
         int fila = tblCarnes.getSelectedRow();
-        String nroDocumento = tblCarnes.getValueAt(fila, 0).toString();
+        
+        if(fila < 0) {
+            JOptionPane.showMessageDialog(this, "DEBE SELECCIONAR UN PASAJERO");        
+        } else {
+            String nroDocumento = tblCarnes.getValueAt(fila, 0).toString();
 
-        crearCarne.cargarDocumento(nroDocumento);
-        content.removeAll();
-        content.add(crearCarne, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+            crearCarne.cargarDocumento(nroDocumento);
+            content.removeAll();
+            content.add(crearCarne, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }
               
     }//GEN-LAST:event_btnCrearCarneMouseClicked
+
+    private void btnSiniestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiniestroMouseClicked
+        siniestroCarne siniestroCarne = new siniestroCarne();
+        siniestroCarne.setSize(770, 700);
+        siniestroCarne.setLocation(0,0);
+        
+        int fila = tblCarnes.getSelectedRow();
+        int nroCarne = Integer.parseInt(tblCarnes.getValueAt(fila, 3).toString());        
+        
+        if (nroCarne < 1 ) {
+            JOptionPane.showMessageDialog(this, "EL PASAJERO NO TIENE CARNET");        
+        } else {        
+            siniestroCarne.cargarCarne(nroCarne, txtBuscarPasajero.getText());
+            content.removeAll();
+            content.add(siniestroCarne, BorderLayout.CENTER);
+            content.revalidate();
+            content.repaint();
+        }
+    }//GEN-LAST:event_btnSiniestroMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnBuscarPasajero;
     private javax.swing.JLabel btnCrearCarne;
     private javax.swing.JLabel btnRecargar;
+    private javax.swing.JLabel btnSiniestro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelCrearCarne;
+    private javax.swing.JPanel panelSiniestro;
     private javax.swing.JTable tblCarnes;
     private javax.swing.JTextField txtBuscarPasajero;
     // End of variables declaration//GEN-END:variables

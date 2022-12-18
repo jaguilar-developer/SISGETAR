@@ -18,7 +18,9 @@ public class Pasajes {
     Date fechaRegistro;
 
     public Integer getIdPasaje() {
+        
         return idPasaje;
+        
     }
 
     public void setIdPasaje(Integer idPasaje) {
